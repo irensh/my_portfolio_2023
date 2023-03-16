@@ -1,7 +1,9 @@
-html, body{
+body{
     box-sizing: border-box;
     margin: 0;
-    height: 100%;
+    padding: 3vh 2vw;
+    /* width: 100vw; */
+    height: 100vh;
     background-image: url('images/black_1.jpg');
     background-size: cover;
     font-family: 'Underdog', cursive;
@@ -9,20 +11,18 @@ html, body{
 }
 
 .main-div{
-    margin: 0 auto;
-    padding: 0 1%;
     position: relative;
-    height: 94%;
-    top: 3%;
+    margin: 0 auto;
+    border-radius: 15px;
+    height: 100%;
     max-width: 1000px;
     overflow: hidden;
     background-color: rgb(137, 60, 60);
-    border-radius: 15px;
 }
 
 #content{
-    margin: 1% auto;
     position: relative;
+    margin: 1% auto;
     width: 100%;
     height: 97%;
     background-image: url('images/light_paper.jpg');
@@ -39,9 +39,31 @@ html, body{
 #left-panel{
     left: 0;
     width: 10%;
+    box-shadow: 6px 0px 10px rgb(59, 39, 19);
 }
 
 #right-panel{
     right: 0;
     width: 88%;
+    box-shadow: -6px 0px 10px rgb(59, 39, 19);
+}
+
+/* Gradients */
+.left-panel-gradient, .right-panel-gradient{
+    position:absolute;
+    top: 0px;
+    width:5%; height:100%;
+}
+.left-panel-gradient{
+    left: 0px;
+	background: -o-linear-gradient(right, rgba(77, 51, 25, 1) 0%, rgba(154, 102, 50, 0) 100%);
+	background: -webkit-linear-gradient(right, rgba(77, 51, 25, 1) 0%, rgba(154, 102, 50, 0) 100%);
+	background: linear-gradient(to right, rgba(77, 51, 25, 1) 0%, rgba(221, 123, 25, 0) 100%);
+	
+}
+.right-panel-gradient{
+    right: 0px;
+	background: -o-linear-gradient(right, rgba(77, 51, 25, 1) 0%, rgba(154, 102, 50, 0) 100%);
+	background: -webkit-linear-gradient(right, rgba(77, 51, 25, 1) 0%, rgba(154, 102, 50, 0) 100%);
+    background: linear-gradient(to left, rgba(77, 51, 25, 1) 0%, rgba(154, 102, 50, 0) 100%);
 }
