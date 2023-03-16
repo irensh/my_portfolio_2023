@@ -1,0 +1,20 @@
+html, body{
+    box-sizing: border-box;
+    margin: 0;
+    height: 100%;
+    background-image: url('images/black_1.jpg');
+    background-size: cover;
+    font-family: 'Underdog', cursive;
+    line-height: 1.8;
+}
+
+.main-div{
+    margin: 0 auto;
+    padding: 0 1%;
+    position: relative;
+    height: 94%;
+    top: 3%;
+    max-width: 1000px;
+    overflow: hidden;
+    background-color: red;
+}
