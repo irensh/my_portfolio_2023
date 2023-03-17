@@ -28,6 +28,10 @@ body {
     overflow: auto;
 }
 
+.content {
+    display: none;
+}
+
 #left-panel,
 #right-panel {
     position: absolute;
@@ -46,6 +50,7 @@ body {
     right: 0;
     width: 88%;
     box-shadow: -6px 0px 10px rgb(59, 39, 19);
+    transition: 1s;
 }
 
 /* Gradients */
