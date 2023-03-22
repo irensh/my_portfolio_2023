@@ -29,7 +29,7 @@ body {
 }
 
 .content {
-    display: none;
+    padding: 1% 12%;
 }
 
 #left-panel,

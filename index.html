@@ -6,16 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
     <title>Irena Popova</title>
 </head>
-<body>
+<body onload="loadLabelsData()">
     <div class="main-div">
         <div id="wrapper-content">
             <div class="content">
-                <h1>Experience</h1>
-            </div>
-            <div class="content">
-                <h1>Projects</h1>
+                <h1 id="header"></h1>
+                <div id="wrapper-list">
+                    <ul></ul>
+                </div>
             </div>
         </div>
         <div id="left-panel"></div>
@@ -29,12 +30,7 @@
                     <p><i class="fa fa-phone fa-fw w3-margin-right w3-large w3-text-teal"></i> 0897904890</p>
                 </div>
             </div>
-            <div id="holder-labels">
-                <div class="label">Experience</div>
-                <div class="label">Projects</div>
-                <div class="label">Skills</div>
-                <div class="label">Education</div><!-- and Certificates -->
-            </div>
+            <div id="holder-labels"></div>
         </div>
         <div class="left-panel-gradient"></div>
         <div class="right-panel-gradient"></div>
