@@ -1,3 +1,4 @@
+const $rightPanel = $('#right-panel');
 //==========GET portfolio IDs============
 let isOpen = false;
 
@@ -27,26 +28,20 @@ function loadLabelsData() {
 
 
     function onLoadLabelsContent() {
-        const rightPanel = document.querySelector('#right-panel');
+        
         const dataIdLabel = $(this).data('id');
 
         if (!isOpen) {
             isOpen = true;
-
-            rightPanel.style.transform = `translate(88%, 0%)`;
-
-            $.ajax({
-                method: 'GET',
-                url: createURL(`${dataIdLabel}`),
-                success: (data) => {displayContent(data, dataIdLabel)},
-                error: onLoadError
-            });
-
-        } else {
-            isOpen = false;
-            rightPanel.style.transform = `translate(0%, 0%)`;
-            // console.log(this.textContent);
+            $rightPanel.css('transform', 'translate(88%, 0%)');
         }
+
+        $.ajax({
+            method: 'GET',
+            url: createURL(`${dataIdLabel}`),
+            success: (data) => {displayContent(data, dataIdLabel)},
+            error: onLoadError
+        });
     }
 
     function displayContent(data, dataIdLabel) {
@@ -98,4 +93,12 @@ function loadLabelsData() {
     function onLoadError(error) {
         console.log(error);
     }
+}
+
+//================== Close right panel ====================
+$('#close').on('click', closeRightPanel);
+
+function closeRightPanel() {
+    isOpen = false;
+    $rightPanel.css('transform', 'translate(0%, 0%)');
 }

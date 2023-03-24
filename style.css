@@ -29,7 +29,16 @@ body {
 }
 
 .content {
+    margin: 1%;
     padding: 1% 12%;
+}
+
+#header {
+    display: inline-block;
+}
+
+#close {
+    cursor:pointer;
 }
 
 #left-panel,
@@ -102,7 +111,7 @@ body {
 /* Labels */
 #holder-labels {
     position: absolute;
-    margin-top: 2%;
+    margin-top: 3%;
     width: 130px;
     top: 0px;
     left: -60px;
