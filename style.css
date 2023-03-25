@@ -130,3 +130,34 @@ body {
 	font-size:22px;
 	cursor:pointer;
 }
+
+@media (orientation: portrait) and (max-width: 700px) {
+    .myimg-info img {
+        position: relative;
+        left: 10%;
+        width: 90%;
+    }
+    
+    .short-info {
+        position: relative;
+        left: 0%;
+        bottom: 0%;
+    }
+
+    .label {
+        font-size:16px;
+    }
+}
+
+
+@media (orientation: landscape) and (max-height: 726px) {
+    .myimg-info img {
+        position: relative;
+        left: 20%;
+        width: 50%;
+    }
+
+    .short-info {
+        bottom: 3%;
+    }
+}
