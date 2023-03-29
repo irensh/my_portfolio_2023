@@ -6,6 +6,8 @@ closeBtn.on('click', closeRightPanel);
 const allShortInfoFa = $('.short-info > p > i.fa');
 allShortInfoFa.on('click', closeRightPanel);
 
+const $divContentInfo = $('#content-info');
+
 let isOpen = false;
 
 //==========GET portfolio IDs============
@@ -36,67 +38,76 @@ function loadLabelsData() {
 
 
     function onLoadLabelsContent() {
-        
+
         const dataIdLabel = $(this).data('id');
 
         openRightPanel();
-        
+
         $.ajax({
             method: 'GET',
             url: createURL(`${dataIdLabel}`),
-            success: (data) => {displayContent(data, dataIdLabel)},
+            success: (data) => { displayContent(data, dataIdLabel) },
             error: onLoadError
         });
     }
 
     function displayContent(data, dataIdLabel) {
+        if (Array.isArray(data) && !data[0]) data.shift();
         console.log(data);
 
-        const $ul = $('#wrapper-list ul');
-              $ul.empty();
-        
+        $divContentInfo.empty();
+
         $('#header').text(dataIdLabel);
 
-        switch (dataIdLabel) {
-            case 'Certificates':
-                data.forEach(row => {
-                    if (row) {
-                        const $li = $('<li>');
-                        const $a = $(`<a target="_blansk" href="${row.link}">${row.subject}</a>`);
-                        $ul.append($li.append($a));
-                    }
-                });
-                break;
-            case 'Education':
-                data.forEach(row => {
-                    if (row) {
-                        const $li = $(`<li>${row}</li>`);
-                        $ul.append($li);
-                    }
-                });
-                break;
-            case 'Experience':
-                data.forEach(row => {
-                    if (row) {
-                        const $li = $(`<li>${row.company}</li>`);
-                        console.log('row.company');
-                        // const $ul2 = $('<ul>');
-                        // const $li2 = $()
-                        $ul.append($li);
-                    }
-                });
-                break;
-            case 'Projects':
-                console.log('Projectssssss');
-                break;
-            case 'Skills':
-                console.log('Skillssssss');
-                break;
+        if (dataIdLabel === 'Certificates') {
+            displayCertificates(data);
+        } else if (dataIdLabel === 'Education') {
+            displayEducation(data);
+        } else if (dataIdLabel === 'Experience') {
+
+        } else if (dataIdLabel === 'Projects') {
+
+        } else if (dataIdLabel === 'Skills') {
+
         }
+
     }
 
     function onLoadError(error) {
         console.log(error);
+    }
+
+
+    function displayCertificates(data) {
+        data.forEach(row => {
+            const link = row.link;
+            const subject = row.subject;
+            const $p = $(`<p><i class="fa-solid fa-award"></i> <a href="${link}" target="_blank">${subject}</a></p>`);
+            $divContentInfo.append($p);
+        })
+    }
+
+    function displayEducation(data) {
+        data.forEach(row => {
+            const date = row.date;
+            const school = row.school;
+            const subject = row.subject;
+
+            const $div = $('<div>');
+            const $h3 = $(`<h3>${school} / ${subject}</h3>`);
+            const $p = $(`<p><i class="fa-regular fa-calendar-days"></i> ${date}</p>`);
+            const $hr = $('<br>');
+            // const $hr = $('<hr>');
+            
+
+            $divContentInfo.append($div
+                .append($h3)
+                .append($p)
+                .append($hr));
+        })
+
+        // const $last = $divContentInfo.children().last();
+        // $last.children().last().remove();
     }
 }
 
@@ -104,7 +115,7 @@ function loadLabelsData() {
 function closeRightPanel() {
     if (isOpen) {
         isOpen = false;
-        $rightPanel.css('transform', 'translate(0%, 0%)'); 
+        $rightPanel.css('transform', 'translate(0%, 0%)');
     }
 }
 
