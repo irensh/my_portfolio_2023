@@ -6,7 +6,7 @@ body {
     height: 100vh;
     background-image: url('./images/black_1.jpg');
     background-size: cover;
-    font-family: 'Underdog', cursive;
+    font-family: Optima, Segoe, Segoe UI, Candara, Calibri, Arial, sans-serif;
     line-height: 1.8;
 }
 
