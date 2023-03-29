@@ -32,6 +32,10 @@ a:link {
     overflow: auto;
 }
 
+fieldset {
+    background-color: rgba(0, 0, 0, 0);
+}
+
 .content {
     margin: 1%;
     padding: 1% 12%;
@@ -135,9 +139,20 @@ a:link {
     cursor: pointer;
 }
 
-/* content-info */
+/* Content-info */
+.empty-bar {
+    border-radius: 10px;
+    width: 60%;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.2);
+}
 
-#content-info {}
+.percent-bar {
+    width: 100%;
+    background-color: rgb(109, 173, 56);
+    text-align: center;
+    font-size: 12px;
+}
 
 @media (orientation: portrait) and (max-width: 700px) {
     .myimg-info img {

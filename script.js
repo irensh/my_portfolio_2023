@@ -36,7 +36,6 @@ function loadLabelsData() {
         }
     }
 
-
     function onLoadLabelsContent() {
 
         const dataIdLabel = $(this).data('id');
@@ -64,11 +63,11 @@ function loadLabelsData() {
         } else if (dataIdLabel === 'Education') {
             displayEducation(data);
         } else if (dataIdLabel === 'Experience') {
-
+            displayExperience(data);
         } else if (dataIdLabel === 'Projects') {
-
+            displayProjects(data);
         } else if (dataIdLabel === 'Skills') {
-
+            displaySkills(data);
         }
 
     }
@@ -96,18 +95,85 @@ function loadLabelsData() {
             const $div = $('<div>');
             const $h3 = $(`<h3>${school} / ${subject}</h3>`);
             const $p = $(`<p><i class="fa-regular fa-calendar-days"></i> ${date}</p>`);
-            const $hr = $('<br>');
-            // const $hr = $('<hr>');
-            
+            const $br = $('<br>');
 
             $divContentInfo.append($div
                 .append($h3)
                 .append($p)
-                .append($hr));
+                .append($br));
         })
 
         // const $last = $divContentInfo.children().last();
         // $last.children().last().remove();
+    }
+
+    function displayExperience(data) {
+        data.forEach(row => {
+            const company = row.company;
+            const date = row.date;
+            const description = row.description;
+            const position = row.position;
+            const website = row.website;
+
+            const $div = $('<div>');
+            const $h3 = $(`<h3>${position} / <a href="${website}" target="_blank ">${company}</a></h3>`);
+            const $pDate = $(`<p><i class="fa-regular fa-calendar-days"></i> ${date}</p>`);
+            const $pDescription = $(`<p>${description}</p>`);
+            const $br = $('<br>');
+
+            $divContentInfo.append($div
+                .append($h3)
+                .append($pDate)
+                .append($pDescription)
+                .append($br));
+        });
+    }
+
+    function displayProjects(data) {
+        data.forEach(row => {
+            const company = row.company;
+            const date = row.date;
+            const link = row.link;
+
+            const $div = $('<div>');
+            const $h3 = $(`<h3>The website of <a href="${link}" target="_blank ">${company}</a></h3>`);
+            const $date = $(`<p><i class="fa-regular fa-calendar-days"></i> ${date}</p>`);
+            const $br = $('<br>');
+
+            $divContentInfo.append($div
+                .append($h3)
+                .append($date)
+                .append($br));
+        });
+    }
+
+    function displaySkills(data) {
+        data.filter(row => row.hasOwnProperty('Language') === false)
+            .forEach(row => {
+                createHTML(row);
+            });
+
+        // Dispaly Languages
+        $divContentInfo.append('<br>')
+                        .append('<h2>Languages</h2>')
+        data.filter(row => row.hasOwnProperty('Language') === true)[0].Language
+            .forEach(row => {
+                createHTML(row);
+            });
+    }
+
+    function createHTML(row) {
+        const type = row.type;
+        const percent = row.percent;
+
+        const $p = $(`<p>${type}</p>`);
+        const $divEmptyBar = $('<div class="empty-bar">');
+        const $divPercentBar = $(`<div class="percent-bar">${percent}%</div>`);
+              $divPercentBar.css('width', `${percent}%`);
+
+        $divContentInfo.append($p)
+                       .append($divEmptyBar
+                            .append($divPercentBar));
     }
 }
 
