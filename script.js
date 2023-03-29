@@ -39,11 +39,8 @@ function loadLabelsData() {
         
         const dataIdLabel = $(this).data('id');
 
-        if (!isOpen) {
-            isOpen = true;
-            $rightPanel.css('transform', 'translate(88%, 0%)');
-        }
-
+        openRightPanel();
+        
         $.ajax({
             method: 'GET',
             url: createURL(`${dataIdLabel}`),
@@ -108,5 +105,12 @@ function closeRightPanel() {
     if (isOpen) {
         isOpen = false;
         $rightPanel.css('transform', 'translate(0%, 0%)'); 
+    }
+}
+
+function openRightPanel() {
+    if (!isOpen) {
+        isOpen = true;
+        $rightPanel.css('transform', 'translate(88%, 0%)');
     }
 }
