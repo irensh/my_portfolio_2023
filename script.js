@@ -1,6 +1,14 @@
 const $rightPanel = $('#right-panel');
-//==========GET portfolio IDs============
+
+const closeBtn = $('#close');
+closeBtn.on('click', closeRightPanel);
+
+const allShortInfoFa = $('.short-info > p > i.fa');
+allShortInfoFa.on('click', closeRightPanel);
+
 let isOpen = false;
+
+//==========GET portfolio IDs============
 
 function createURL(collectionOrPath) {
     const baseUrl = 'https://portfolio-80642-default-rtdb.firebaseio.com/';
@@ -96,9 +104,9 @@ function loadLabelsData() {
 }
 
 //================== Close right panel ====================
-$('#close').on('click', closeRightPanel);
-
 function closeRightPanel() {
-    isOpen = false;
-    $rightPanel.css('transform', 'translate(0%, 0%)');
+    if (isOpen) {
+        isOpen = false;
+        $rightPanel.css('transform', 'translate(0%, 0%)'); 
+    }
 }
