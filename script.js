@@ -82,8 +82,8 @@ function loadLabelsData() {
         data.forEach(row => {
             const link = row.link;
             const subject = row.subject;
-            const $p = $(`<p><i class="fa-solid fa-award"></i> <a href="${link}" target="_blank">${subject}</a></p>`);
-            $divContentInfo.append($p);
+            const $h3 = $(`<h3><i class="fa-solid fa-award"></i> <a href="${link}" target="_blank">${subject}</a></h3>`);
+            $divContentInfo.append($h3);
         })
     }
 
