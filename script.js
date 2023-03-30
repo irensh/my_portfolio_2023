@@ -37,6 +37,7 @@ function loadLabelsData() {
     }
 
     function onLoadLabelsContent() {
+        $("#wrapper-content").animate ({scrollTop: 0}, 600);
 
         const dataIdLabel = $(this).data('id');
 
