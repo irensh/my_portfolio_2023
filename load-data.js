@@ -8,12 +8,15 @@ const selectors = {
     allShortInfoFa: '.short-info > p > i.fa'
 }
 
+let isOpen = false;
+
+const { allShortInfoFa } = selectors;
+$(allShortInfoFa).on('click', closeRightPanel);
+
 class LoadAllText {
-    #isOpen;
     #queryUrl;
 
     constructor() {
-        this.#isOpen = false;
         this.#queryUrl = 'https://portfolio-80642-default-rtdb.firebaseio.com/.json';
         this.collections = {};
     }
@@ -55,10 +58,10 @@ class LoadAllText {
         const collection = this.collections[idLabel];
 
         $(wrapperContent).animate({ scrollTop: 0 }, 600);
-        $(closeBtn).on('click', this.closeRightPanel);
+        $(closeBtn).on('click', closeRightPanel);
 
         this.renderContent(idLabel, collection);
-        this.openRightPanel();
+        openRightPanel();
     }
 
     renderContent = (idLabel, collection) => {
@@ -174,27 +177,25 @@ class LoadAllText {
                 divContentInfo.append($domElements);
         }
     }
-
-
-    openRightPanel = () => {
-        if (!this.#isOpen) {
-            this.#isOpen = true;
-
-            const { rightPanel } = selectors;
-            $(rightPanel).css('transform', 'translate(88%, 0%)');
-        }
-    }
-
-    closeRightPanel = () => {
-        if (this.#isOpen) {
-            this.#isOpen = false;
-
-            const { rightPanel } = selectors;
-            $(rightPanel).css('transform', 'translate(0%, 0%)');
-        }
-    }
-
 }
 
 const loadLabels = new LoadAllText();
 loadLabels.init();
+
+function openRightPanel() {
+    if (!isOpen) {
+        isOpen = true;
+
+        const { rightPanel } = selectors;
+        $(rightPanel).css('transform', 'translate(88%, 0%)');
+    }
+}
+
+function closeRightPanel() {
+    if (isOpen) {
+        isOpen = false;
+
+        const { rightPanel } = selectors;
+        $(rightPanel).css('transform', 'translate(0%, 0%)');
+    }
+}
