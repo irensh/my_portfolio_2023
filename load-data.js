@@ -13,6 +13,24 @@ let isOpen = false;
 const { allShortInfoFa } = selectors;
 $(allShortInfoFa).on('click', closeRightPanel);
 
+function openRightPanel() {
+    if (!isOpen) {
+        isOpen = true;
+
+        const { rightPanel } = selectors;
+        $(rightPanel).css('transform', 'translate(88%, 0%)');
+    }
+}
+
+function closeRightPanel() {
+    if (isOpen) {
+        isOpen = false;
+
+        const { rightPanel } = selectors;
+        $(rightPanel).css('transform', 'translate(0%, 0%)');
+    }
+}
+
 class LoadAllText {
     #queryUrl;
 
@@ -182,20 +200,3 @@ class LoadAllText {
 const loadLabels = new LoadAllText();
 loadLabels.init();
 
-function openRightPanel() {
-    if (!isOpen) {
-        isOpen = true;
-
-        const { rightPanel } = selectors;
-        $(rightPanel).css('transform', 'translate(88%, 0%)');
-    }
-}
-
-function closeRightPanel() {
-    if (isOpen) {
-        isOpen = false;
-
-        const { rightPanel } = selectors;
-        $(rightPanel).css('transform', 'translate(0%, 0%)');
-    }
-}
